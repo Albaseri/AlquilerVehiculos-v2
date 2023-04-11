@@ -102,7 +102,6 @@ public class Consola {
 
 	private static TipoVehiculo elegirTipoVehiculo() {
 		mostrarMenuTipoVehiculos();
-
 		TipoVehiculo ordinal = null;
 		do {
 			try {
@@ -130,9 +129,8 @@ public class Consola {
 		case FURGONETA:
 			vehiculoNuevo = new Furgoneta(marca, modelo, leerEntero("Introduzca el Peso Máximo Permitido (pma) "),
 					leerEntero("Introduzca el número de plazas: "), matricula);
-			
 		}
-		return null;
+		return vehiculoNuevo;
 	}
 
 	public static Vehiculo leerVehiculoMatricula() {

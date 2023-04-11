@@ -19,6 +19,10 @@ public abstract class Modelo {
 	private IVehiculos vehiculos;
 	private IFuenteDatos fuenteDatos;
 
+	protected Modelo(FactoriaFuenteDatos factoriaFuenteDatos) {
+
+	}
+
 	protected IClientes getClientes() {
 		return clientes;
 	}
@@ -32,6 +36,9 @@ public abstract class Modelo {
 	}
 
 	protected void setFuenteDatos(IFuenteDatos fuenteDatos) {
+		if (fuenteDatos == null) {
+	        throw new IllegalArgumentException("ERROR: la fuente de datos no puede ser nula.");
+		}
 		this.fuenteDatos = fuenteDatos;
 	}
 

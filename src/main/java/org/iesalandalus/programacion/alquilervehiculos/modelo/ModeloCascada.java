@@ -13,19 +13,18 @@ import org.iesalandalus.programacion.alquilervehiculos.modelo.negocio.IFuenteDat
 
 public class ModeloCascada extends Modelo {
 
-	public ModeloCascada(IFuenteDatos fuenteDatos) {
-		super();
-		setFuenteDatos(fuenteDatos);
+	public ModeloCascada(FactoriaFuenteDatos factoriaFuenteDatos) {
+		super(factoriaFuenteDatos);
 	}
 
 	@Override
 	public void insertar(Cliente cliente) throws OperationNotSupportedException {
-		getClientes().insertar(cliente);
+		getClientes().insertar(new Cliente(cliente));
 	}
 
 	@Override
 	public void insertar(Vehiculo vehiculo) throws OperationNotSupportedException {
-		getVehiculos().insertar(vehiculo);
+		getVehiculos().insertar(Vehiculo.copiar(vehiculo));
 	}
 
 	@Override

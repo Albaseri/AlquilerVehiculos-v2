@@ -98,5 +98,4 @@ public abstract class Vehiculo {
 		Vehiculo other = (Vehiculo) obj;
 		return Objects.equals(matricula, other.matricula);
 	}
-
 }

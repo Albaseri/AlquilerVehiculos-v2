@@ -11,5 +11,5 @@ public enum FactoriaFuenteDatos {
 		}
 	};
 
-	public abstract IFuenteDatos crear();
+	abstract IFuenteDatos crear();
 }

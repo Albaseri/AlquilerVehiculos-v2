@@ -1,5 +1,6 @@
 package org.iesalandalus.programacion.alquilervehiculos.vista.texto;
 
+import java.time.LocalDate;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
@@ -186,12 +187,14 @@ public class VistaTexto extends Vista {
 	}
 
 	public void mostrarEstadisticasMensualesTipoVehiculo() {
+		LocalDate mesI = Consola.leerMes();
 		Map<TipoVehiculo, Integer> mapa = inicializarEstadisticas();
 		for (Alquiler alquiler : getControlador().getAlquileres()) {
-		}
-		
-		if (alquiler.getAlquiler) {
-			
+			if (alquiler.getFechaAlquiler().getMonthValue() == mesI.getMonthValue()
+					&& alquiler.getFechaAlquiler().getYear() == mesI.getYear()) {
+				mapa.put(TipoVehiculo.get(alquiler.getVehiculo()),
+						mapa.getOrDefault(TipoVehiculo.get(alquiler.getVehiculo()), 0) + 1);
+			}
 		}
 	}
 

@@ -11,6 +11,9 @@ import org.iesalandalus.programacion.alquilervehiculos.modelo.dominio.Vehiculo;
 
 public interface IAlquileres {
 
+	void comenzar();
+
+	void terminar();
 
 	List<Alquiler> get();
 
@@ -18,17 +21,14 @@ public interface IAlquileres {
 
 	List<Alquiler> get(Vehiculo vehiculo);
 
+	void insertar(Alquiler alquiler) throws OperationNotSupportedException;
 
-	public int getCantidad();
+	void devolver(Cliente cliente, LocalDate fechaDevolucion) throws OperationNotSupportedException;
 
-	public void insertar(Alquiler alquiler) throws OperationNotSupportedException;
+	void devolver(Vehiculo vehiculo, LocalDate fechaDevolucion) throws OperationNotSupportedException;
 
-	public void devolver(Cliente cliente, LocalDate fechaDevolucion) throws OperationNotSupportedException;
+	Alquiler buscar(Alquiler alquiler);
 
-	public void devolver(Vehiculo vehículo, LocalDate fechaDevolucion) throws OperationNotSupportedException;
-
-	public Alquiler buscar(Alquiler alquiler);
-
-	public void borrar(Alquiler alquiler) throws OperationNotSupportedException;
+	void borrar(Alquiler alquiler) throws OperationNotSupportedException;
 
 }
