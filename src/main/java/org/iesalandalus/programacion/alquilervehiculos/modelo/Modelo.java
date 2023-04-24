@@ -20,7 +20,10 @@ public abstract class Modelo {
 	private IFuenteDatos fuenteDatos;
 
 	protected Modelo(FactoriaFuenteDatos factoriaFuenteDatos) {
-
+		setFuenteDatos(factoriaFuenteDatos.crear()); 
+		clientes = fuenteDatos.crearClientes();
+		vehiculos = fuenteDatos.crearVehiculos();
+		alquileres = fuenteDatos.crearAlquileres();
 	}
 
 	protected IClientes getClientes() {
@@ -37,19 +40,21 @@ public abstract class Modelo {
 
 	protected void setFuenteDatos(IFuenteDatos fuenteDatos) {
 		if (fuenteDatos == null) {
-	        throw new IllegalArgumentException("ERROR: la fuente de datos no puede ser nula.");
+			throw new IllegalArgumentException("ERROR: la fuente de datos no puede ser nula.");
 		}
 		this.fuenteDatos = fuenteDatos;
 	}
 
 	public void comenzar() {
-		clientes = fuenteDatos.crearClientes();
-		vehiculos = fuenteDatos.crearVehiculos();
-		alquileres = fuenteDatos.crearAlquileres();
+		clientes.comenzar();
+		vehiculos.comenzar();
+		alquileres.comenzar();
 	}
 
 	public void terminar() {
-		System.out.println("El modelo ha terminado");
+		clientes.terminar();
+		vehiculos.terminar();
+		alquileres.terminar();
 	}
 
 	public abstract void insertar(Cliente cliente) throws OperationNotSupportedException;

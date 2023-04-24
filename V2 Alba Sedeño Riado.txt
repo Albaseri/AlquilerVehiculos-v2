@@ -1,0 +1,7 @@
+Considero que me han faltado numerosos aspectos que modificar en algunas de las clases. 
+
+He presentado dificultades en los métodos getElemento de las clases Vehículos y Alquileres. 
+
+En Alquileres me da error en el método getAlquiler, que no consigo detectar la solución en Cliente.
+
+Repository https://github.com/Albaseri/AlquilerVehiculos-v2.git

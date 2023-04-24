@@ -9,7 +9,6 @@ import javax.naming.OperationNotSupportedException;
 import org.iesalandalus.programacion.alquilervehiculos.modelo.dominio.Alquiler;
 import org.iesalandalus.programacion.alquilervehiculos.modelo.dominio.Cliente;
 import org.iesalandalus.programacion.alquilervehiculos.modelo.dominio.Vehiculo;
-import org.iesalandalus.programacion.alquilervehiculos.modelo.negocio.IFuenteDatos;
 
 public class ModeloCascada extends Modelo {
 
@@ -55,7 +54,7 @@ public class ModeloCascada extends Modelo {
 
 	@Override
 	public Alquiler buscar(Alquiler alquiler) {
-		return new Alquiler(getAlquileres().buscar(alquiler));
+		return new Alquiler(getAlquileres().buscar(alquiler)); 
 	}
 
 	@Override

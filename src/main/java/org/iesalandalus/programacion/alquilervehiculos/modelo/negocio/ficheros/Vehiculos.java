@@ -117,7 +117,7 @@ public class Vehiculos implements IVehiculos {
 
 	private Element getElemento(Document documentoXml, Vehiculo vehiculo) {
 
-		Element elementoVehiculo = getElemento(documentoXml, vehiculo);
+		Element elementoVehiculo = documentoXml.createElement(VEHICULO);
 		elementoVehiculo.setAttribute(MARCA, vehiculo.getMarca());
 		elementoVehiculo.setAttribute(MATRICULA, vehiculo.getMatricula());
 		elementoVehiculo.setAttribute(MODELO, vehiculo.getModelo());
@@ -128,6 +128,9 @@ public class Vehiculos implements IVehiculos {
 	        elementoVehiculo.setAttribute(PLAZAS, String.valueOf((autobusN.getPlazas())));
 	    } else if (vehiculo instanceof Furgoneta furgonetaN) {
 	        elementoVehiculo.setAttribute(PMA, String.valueOf(furgonetaN.getPma()));
+	        elementoVehiculo.setAttribute(PLAZAS, String.valueOf(furgonetaN.getPlazas()));
+	      //Con STRING.FORMAT-->  elementoVehiculo.setAttribute(PLAZAS, String.format("%s",furgonetaN.getPlazas()));
+
 	    }
 		return elementoVehiculo;
 	}

@@ -30,7 +30,7 @@ public class Consola {
 	}
 
 	public static void mostrarMenuAcciones() {
-		mostrarCabecera("Plataforma para alquileres de coches.");
+		mostrarCabecera("PLATAFORMA PARA ALQUILERES DE COCHES.");
 		for (Accion pruebaOp : Accion.values()) {
 			System.out.println(pruebaOp.toString());
 		}
@@ -82,11 +82,11 @@ public class Consola {
 	}
 
 	public static String leerNombre() {
-		return leerCadena("Introduzca su nombre");
+		return leerCadena("Introduzca su nombre: ");
 	}
 
 	public static String leerTelefono() {
-		return leerCadena("Introduzca su número de teléfono");
+		return leerCadena("Introduzca su número de teléfono: ");
 	}
 
 	public static Vehiculo leerVehiculo() {
@@ -105,6 +105,7 @@ public class Consola {
 		TipoVehiculo ordinal = null;
 		do {
 			try {
+				System.out.println(); //añado esto para que aparezca en la línea de abajo de las 3 opciones de tipovehiculo. 
 				ordinal = TipoVehiculo.get(leerEntero("Introduzca un número entero: "));
 			} catch (Exception e) {
 				System.out.println(e.getMessage());
@@ -114,7 +115,7 @@ public class Consola {
 	}
 
 	private static Vehiculo leerVehiculo(TipoVehiculo tipoVehiculo) {
-		TipoVehiculo tVehiculo = elegirTipoVehiculo();
+		//TipoVehiculo tVehiculo = elegirTipoVehiculo();
 		String marca = leerCadena("Introduzca la marca: ");
 		String modelo = leerCadena("Introduzca el modelo: ");
 		String matricula = leerCadena("Introduzca la matrícula: ");
@@ -127,7 +128,7 @@ public class Consola {
 			vehiculoNuevo = new Autobus(marca, modelo, leerEntero("Introduzca el número de plazas: "), matricula);
 			break;
 		case FURGONETA:
-			vehiculoNuevo = new Furgoneta(marca, modelo, leerEntero("Introduzca el Peso Máximo Permitido (pma) "),
+			vehiculoNuevo = new Furgoneta(marca, modelo, leerEntero("Introduzca el Peso Máximo Permitido (PMA): "),
 					leerEntero("Introduzca el número de plazas: "), matricula);
 		}
 		return vehiculoNuevo;
@@ -148,6 +149,6 @@ public class Consola {
 	}
 
 	public static LocalDate leerMes() {
-		return leerFecha("Introduzca una fecha con el  siguiente formato: MM/yyyy", PATRON_MES);
+		return leerFecha("Introduzca una fecha con el  siguiente formato: MM/yyyy: ", PATRON_MES);
 	}
 }

@@ -88,11 +88,11 @@ public class Alquileres implements IAlquileres {
 		Alquiler alquiler = new Alquiler(buscarCliente, buscarVehiculo, localDate);
 
 		if (elemento.hasAttribute(FECHA_DEVOLUCION)) {
-			String fechaDevolucion = elemento.getAttribute(FECHA_DEVOLUCION);
-			LocalDate localD = LocalDate.parse(fechaDevolucion, FORMATO_FECHA);
+			//String fechaDevolucion = elemento.getAttribute(FECHA_DEVOLUCION);
+			LocalDate localD = LocalDate.parse(elemento.getAttribute(FECHA_DEVOLUCION), FORMATO_FECHA);
 			alquiler.devolver(localD);
 		}
-		return  alquiler;
+		return alquiler;
 	}
 
 	@Override
@@ -116,17 +116,17 @@ public class Alquileres implements IAlquileres {
 	}
 
 	private Element getElemento(Document documentoXml, Alquiler alquiler) {
-		Element elementoAlquiler = getElemento(documentoXml, alquiler);
+		Element elementoAlquiler = documentoXml.createElement(ALQUILER); 
 		elementoAlquiler.setAttribute(CLIENTE, alquiler.getCliente().getDni());
+		elementoAlquiler.setAttribute(VEHICULO, alquiler.getVehiculo().getMatricula());
+
 		elementoAlquiler.setAttribute(FECHA_ALQUILER, FORMATO_FECHA.format(alquiler.getFechaAlquiler()));
 
-		if (fechaDevolucion == null) {
+		if (alquiler.getFechaDevolucion() !=null) {
+			elementoAlquiler.setAttribute(FECHA_DEVOLUCION, FORMATO_FECHA.format(alquiler.getFechaDevolucion()));
 
 		}
-
-		elementoAlquiler.setAttribute(VEHICULO, alquiler.getVehiculo().getMatricula());
 		return elementoAlquiler;
-
 	}
 
 	@Override
